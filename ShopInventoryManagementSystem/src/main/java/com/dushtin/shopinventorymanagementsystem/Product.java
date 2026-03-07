@@ -46,20 +46,23 @@ public class Product {
     
     // ---------- necessary to for edit the names, quantity and prices. * i havent tried or wrritten bout the id's tho ---------//
     
+    public void setProductID(String productid) {
+        this.productID = productid;
+    }
     
-//        public void setQuantity(int quantity) {
-//        this.quantity = quantity;
-//    }
-    //public void setProductName(String name) {
-  //    this.name = name
- //   }
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    public void setProductName(String name) {
+      this.name = name;
+    }
     
-    //public void setPrice(Double price) {
-  //    this.price = price
- //   }
+    public void setPrice(double price) {
+      this.price = price;
+    }
     
-//    public void setCategory(String category) {
-//      this.category = category;
-//    }
-//   
+    public void setCategory(String category) {
+    this.category = category;
+   }
+ 
 }

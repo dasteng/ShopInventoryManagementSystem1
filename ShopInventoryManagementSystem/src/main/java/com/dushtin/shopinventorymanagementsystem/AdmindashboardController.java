@@ -22,7 +22,7 @@ public class AdmindashboardController {
     
 // this finds the id=button in the fxml which is in the admindashboard.fxml and the others thats has an fx:id =""
     @FXML 
-    private Button buttonInventory, buttonSalesRecording, buttonStockMonitoring, buttonReporting, logoutButton;
+    private Button buttonInventory, buttonSalesRecording, buttonStockMonitoring, buttonReporting, logoutButton, homeButton;
     
     @FXML
     private StackPane Centerpane;
@@ -35,6 +35,7 @@ public class AdmindashboardController {
         buttonSalesRecording.setOnAction(e -> showSalesRecording());
         buttonStockMonitoring.setOnAction(e -> showStockMonitoring());
         buttonReporting.setOnAction(e -> showReporting());
+        homeButton.setOnAction (e -> showHome());
         logoutButton.setOnAction(e -> {
             try {
                 App.setRoot("lOGin"); // itll work with or without strings ince the app.setroot is already in the app.java named login
@@ -50,34 +51,54 @@ public class AdmindashboardController {
     
     TableView<Product> table = new TableView<>(); // this basically create a table to view that named table like litral
     
-    TableColumn<Product, String> prdctidCol = new TableColumn<>("Product Name");
+    TableColumn<Product, String> prdctidCol = new TableColumn<>("Product ID");
     prdctidCol.setCellValueFactory(new PropertyValueFactory<>("productID"));
+    
+    // this type of code or syntax basically make the text editable
+     prdctidCol.setCellFactory(TextFieldTableCell.forTableColumn(new DefaultStringConverter()));
+     prdctidCol.setOnEditCommit(event -> {
+      Product product = event.getRowValue();
+            product.setProductID(event.getNewValue());
+     });    
     
     TableColumn<Product, String> nameCol = new TableColumn<>("Product Name");
     nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
     
+     nameCol.setCellFactory(TextFieldTableCell.forTableColumn(new DefaultStringConverter()));
+     nameCol.setOnEditCommit(event -> {
+      Product product = event.getRowValue();
+            product.setProductName(event.getNewValue());
+     });    
+    
     TableColumn<Product, String> ctgryCol = new TableColumn<>("Category");
     ctgryCol.setCellValueFactory(new PropertyValueFactory<>("category"));
     
-    // ---------- commented shit since i havent tried it ---------//
-//     ctgryCol.setCellFactory(TextFieldTableCell.forTableColumn(new DefaultStringConverter()));
-//     ctgryCol.setOnEditCommit(event -> {
-//      Product product = event.getRowValue();
-//            product.setCategory(event.getNewValue());
-//     });
+    
+     ctgryCol.setCellFactory(TextFieldTableCell.forTableColumn(new DefaultStringConverter()));
+     ctgryCol.setOnEditCommit(event -> {
+      Product product = event.getRowValue();
+            product.setCategory(event.getNewValue());
+     });
      
     TableColumn<Product, Integer> qtyCol = new TableColumn<>("Quantity");
     qtyCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
      
     
-//       qtyCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-//        qtyCol.setOnEditCommit(event -> {
-//            Product product = event.getRowValue();
-//            product.setQuantity(event.getNewValue());
-//        });
-//     
+       qtyCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        qtyCol.setOnEditCommit(event -> {
+            Product product = event.getRowValue();
+            product.setQuantity(event.getNewValue());
+            table.refresh();
+        });
+     
     TableColumn<Product, Double> prcCol = new TableColumn<>("Price");
     prcCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+    
+    prcCol.setCellFactory(TextFieldTableCell.forTableColumn(new javafx.util.converter.DoubleStringConverter()));
+    prcCol.setOnEditCommit(event -> {
+    Product product = event.getRowValue();
+    product.setPrice(event.getNewValue());
+        });
     
     table.getColumns().addAll(prdctidCol, nameCol, ctgryCol, qtyCol, prcCol);
     
@@ -117,6 +138,16 @@ public class AdmindashboardController {
     label.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
     Centerpane.getChildren().add(label);
     
+    }
+    
+    private void showHome() {
+    Centerpane.getChildren().clear();
+
+    Label label = new Label("Welcome, Admin!");
+    label.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #34495e;");
+    Centerpane.getChildren().add(label);    
+        
+        
     }
 
 

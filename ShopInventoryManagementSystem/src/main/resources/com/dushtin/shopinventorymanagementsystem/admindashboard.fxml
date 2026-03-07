@@ -17,8 +17,11 @@
             </center>
             
             <right>
-                <Button fx:id="logoutButton" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: #4e54c8; -fx-text-fill: black; -fx-font-weight: bold; -fx-padding: 8 18 8 18; -fx-background-radius: 9; -fx-cursor: hand; -fx-border-width: 2; -fx-border-color: black; -fx-border-radius: 4;" text="Logout" />
+                <Button fx:id="logoutButton" prefHeight="40.0" prefWidth="81.0" style="-fx-background-color: #4e54c8; -fx-text-fill: black; -fx-font-weight: bold; -fx-padding: 8 18 8 18; -fx-background-radius: 9; -fx-cursor: hand; -fx-border-width: 2; -fx-border-color: black; -fx-border-radius: 4;" text="Logout" />
             </right>
+         <left>
+            <Button fx:id="homeButton" prefHeight="40.0" prefWidth="81.0" style="-fx-background-color: #4e54c8; -fx-border-color: black; -fx-border-radius: 4; -fx-border-width: 2; -fx-font-weight: bold; -fx-text-fill: black; -fx-cursor: hand;" text="Home" BorderPane.alignment="CENTER" />
+         </left>
         </BorderPane>
     </top>
 
