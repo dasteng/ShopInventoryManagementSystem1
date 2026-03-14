@@ -23,12 +23,12 @@
             </columnConstraints>
 
             <Label style="-fx-text-fill: white;" text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" />
+            <TextField fx:id="usernameField" style="-fx-border-width: 2; -fx-border-radius: 4; -fx-border-color: #8f94fb;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" />
 
             <Label style="-fx-text-fill: white;" text="Password:" GridPane.rowIndex="1" />
-            <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+            <PasswordField fx:id="passwordField" style="-fx-border-width: 2; -fx-border-color: #8f94fb; -fx-border-radius: 4;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
 
-            <Button fx:id="loginButton" style="-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-font-weight: bold;" text="Login" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
+            <Button fx:id="loginButton" style="-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-width: 2; -fx-border-color: #8f94fb; -fx-border-radius: 4;" text="Login" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
 
             <Label fx:id="messageLabel" style="-fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          <rowConstraints>

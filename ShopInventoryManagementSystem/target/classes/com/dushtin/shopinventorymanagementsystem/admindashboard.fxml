@@ -6,37 +6,45 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dushtin.shopinventorymanagementsystem.AdmindashboardController">
+<BorderPane prefHeight="600" prefWidth="800" style="-fx-background-color: #f5f7fa;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dushtin.shopinventorymanagementsystem.AdmindashboardController">
 
-    <!-- Top bar with logout -->
+    <!-- top header ng admin -->
     <top>
-        <BorderPane prefHeight="85.0" style="-fx-padding: 15px; -fx-background-color: #e0e0e0;">
+        <BorderPane prefHeight="85.0" style="-fx-padding: 15px 25px 15px 25px; -fx-background-color: #4e54c8; -fx-border-width: 0 0 0 0;">
             
             <center>
-                <Label style="-fx-font-size: 28px; -fx-font-weight: bold;" text="Admin Dashboard" />
+                <Label alignment="CENTER" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Admin Dashboard" />
             </center>
             
             <right>
-                <Button fx:id="logoutButton" style="-fx-background-color: #ff4b5c; -fx-text-fill: white; -fx-font-weight: bold;" text="Logout" />
+                <Button fx:id="logoutButton" prefHeight="40.0" prefWidth="81.0" style="-fx-background-color: #4e54c8; -fx-text-fill: black; -fx-font-weight: bold; -fx-padding: 8 18 8 18; -fx-background-radius: 9; -fx-cursor: hand; -fx-border-width: 2; -fx-border-color: black; -fx-border-radius: 4;" text="Logout" />
             </right>
+
+            <left>
+                <Button fx:id="homeButton" prefHeight="40.0" prefWidth="81.0" style="-fx-background-color: #4e54c8; -fx-border-color: black; -fx-border-radius: 4; -fx-border-width: 2; -fx-font-weight: bold; -fx-text-fill: black; -fx-cursor: hand;" text="Home" />
+            </left>
+
         </BorderPane>
     </top>
 
-    <!-- Left sidebar -->
+    <!-- buttons and sjit -->
     <left>
-        <VBox prefWidth="200" spacing="15" style="-fx-background-color: #f0f0f0; -fx-padding: 10;">
-            <Button fx:id="buttonInventory" maxWidth="Infinity" text="View Inventory" />
-            <Button fx:id="buttonSalesReport" maxWidth="Infinity" text="Sales Report" />
-            <Button fx:id="buttonOrders" maxWidth="Infinity" text="Orders" />
-            <Button fx:id="buttonProfile" maxWidth="Infinity" text="Profile" />
+        <VBox prefWidth="210" spacing="50.0" style="-fx-background-color: #8f94fb; -fx-padding: 20 15 20 15; -fx-border-color: #e0e0e0; -fx-border-width: 0 0 0 0;">
+
+            <Button fx:id="buttonInventory" maxWidth="Infinity" style="-fx-background-color: #4e54c8; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10; -fx-background-radius: 6; -fx-cursor: hand;" text="View Inventory" />
+
+            <Button fx:id="buttonSalesRecording" maxWidth="Infinity" style="-fx-background-color: #4e54c8; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10; -fx-background-radius: 6; -fx-cursor: hand;" text="Sales Record" />
+
+            <Button fx:id="buttonStockMonitoring" maxWidth="Infinity" style="-fx-background-color: #4e54c8; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10; -fx-background-radius: 6; -fx-cursor: hand;" text="Stock Monitoring" />
+
+            <Button fx:id="buttonReporting" maxWidth="Infinity" style="-fx-background-color: #4e54c8; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10; -fx-background-radius: 6; -fx-cursor: hand;" text="Reporting" />
+
         </VBox>
     </left>
 
-    <!-- Center content -->
+    <!-- next to teh navigation, basically the centerpane    -->
     <center>
-        <StackPane fx:id="Centerpane" alignment="CENTER" style="-fx-background-color: #ffffff; -fx-padding: 20;">
-            <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Welcome, Admin!" />
-        </StackPane>
+        <StackPane fx:id="Centerpane" alignment="CENTER" style="-fx-background-color: #f0f2ff;" />
     </center>
 
 </BorderPane>
