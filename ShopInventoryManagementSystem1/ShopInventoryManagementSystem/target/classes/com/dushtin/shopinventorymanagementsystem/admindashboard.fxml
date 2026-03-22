@@ -28,7 +28,7 @@
 
     <left>
         <VBox fx:id="sidebar" prefWidth="250" spacing="5"
-      style="-fx-background-color: #2C3E50; -fx-padding: 20; -fx-alignment: TOP_CENTER;"
+      style="-fx-background-color: #3b6ea8; -fx-padding: 20; -fx-alignment: TOP_CENTER;"
       visible="false" managed="false">
     <Button fx:id="homeButton" text="Dashboard" styleClass="sidebar-button" />
     <Button fx:id="buttonInventory" text="Inventory" styleClass="sidebar-button" />
