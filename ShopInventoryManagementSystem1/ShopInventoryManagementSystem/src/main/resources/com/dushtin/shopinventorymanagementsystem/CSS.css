@@ -1,0 +1,45 @@
+#loginButton {
+    -fx-background-color: #6c63ff;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-border-width: 2;
+    -fx-border-color: #8f94fb;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+
+#loginButton:hover {
+    -fx-background-color: #3a327a;   
+    -fx-text-fill: white;        
+    -fx-cursor: hand;         
+    -fx-border-color: #6c63ff;
+}
+
+
+
+
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10 15 10 15;
+    -fx-background-radius: 0;
+    -fx-pref-width: 250;
+    -fx-translate-x: 0;
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+
+.sidebar-button:hover {
+    -fx-background-color: #5a4fcf;
+    -fx-text-fill: #ffffff;
+    -fx-translate-x: 5;
+}
+
+
+.sidebar-button.active {
+    -fx-background-color: #5a4fcf;
+    -fx-text-fill: #ffffff;
+}
