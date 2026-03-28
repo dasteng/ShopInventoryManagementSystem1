@@ -1,5 +1,6 @@
 com\dushtin\shopinventorymanagementsystem\AdmindashboardController.class
 com\dushtin\shopinventorymanagementsystem\Product.class
+com\dushtin\shopinventorymanagementsystem\DatabaseManager.class
 com\dushtin\shopinventorymanagementsystem\InventoryadminController.class
 com\dushtin\shopinventorymanagementsystem\ManagerdashboardController.class
 com\dushtin\shopinventorymanagementsystem\ReportingadminController.class
