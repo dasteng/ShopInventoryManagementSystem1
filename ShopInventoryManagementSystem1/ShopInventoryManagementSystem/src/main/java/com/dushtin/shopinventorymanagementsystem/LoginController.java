@@ -20,21 +20,25 @@ public class LoginController {
 
     public void initialize() {
         loginButton.setOnAction(e -> {
-            String user = usernameField.getText();
-            String pass = passwordField.getText();
+            String username = usernameField.getText().trim();
+            String password = passwordField.getText().trim();
+            
+            String role = DatabaseManager.login(username, password);
 
             try {
-                if (user.equals("admin") && pass.equals("1234")) {
-                    App.setRoot("AdminDashboard"); // switch to admin
-                } else if (user.equals("manager") && pass.equals("1234")) {
-                    App.setRoot("ManagerDashboard"); // switch to manager
+                if("admin".equals(role)) {
+                    App.setRoot("AdminDashboard");
+                } else if("manager".equals(role)) {
+                    App.setRoot("ManagerDashboard");
                 } else {
-                    messageLabel.setText("Incorrect username or password");
+                    messageLabel.setText("Incorrect Username or Password!");
                     messageLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
                 }
+
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
+            
         });
     }
 }

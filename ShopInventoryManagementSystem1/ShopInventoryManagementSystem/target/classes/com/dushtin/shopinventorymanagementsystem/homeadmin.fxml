@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #82c0f2;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dushtin.shopinventorymanagementsystem.InventoryadminController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #82c0f2;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dushtin.shopinventorymanagementsystem.HomeController">
 
     
     <VBox alignment="TOP_LEFT" spacing="20.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
@@ -24,19 +24,19 @@
             <Pane prefHeight="175.0" prefWidth="175.0" style="-fx-background-color: #4f7abf; -fx-background-radius: 40;">
                <children>
                   <Label layoutX="34.0" layoutY="27.0" prefHeight="44.0" prefWidth="107.0" style="-fx-text-fill: #021839; -fx-font-weight: bold;" text="Total  Transactions" />
-                  <Label alignment="CENTER" layoutX="34.0" layoutY="99.0" prefHeight="44.0" prefWidth="107.0" style="-fx-text-fill: white; -fx-font-weight: bold;" text="0" textAlignment="CENTER" />
+                  <Label fx:id="totalTransactionsLabel" alignment="CENTER" layoutX="34.0" layoutY="99.0" prefHeight="44.0" prefWidth="107.0" style="-fx-text-fill: white; -fx-font-weight: bold;" text="0" textAlignment="CENTER" />
                </children>
             </Pane>
             <Pane layoutX="313.0" layoutY="10.0" prefHeight="175.0" prefWidth="175.0" style="-fx-background-color: #4f7abf; -fx-background-radius: 40;">
                <children>
                   <Label layoutX="46.0" layoutY="27.0" prefHeight="44.0" prefWidth="92.0" style="-fx-text-fill: #021839; -fx-font-weight: bold;" text="Total Items Sold" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="99.0" prefHeight="44.0" prefWidth="107.0" style="-fx-text-fill: white; -fx-font-weight: bold;" text="0" textAlignment="CENTER" />
+                  <Label fx:id="totalItemsSoldLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="99.0" prefHeight="44.0" prefWidth="107.0" style="-fx-text-fill: white; -fx-font-weight: bold;" text="0" textAlignment="CENTER" />
                </children>
             </Pane>
             <Pane layoutX="410.0" layoutY="10.0" prefHeight="175.0" prefWidth="175.0" style="-fx-background-color: #4f7abf; -fx-background-radius: 49;">
                <children>
                   <Label layoutX="55.0" layoutY="27.0" prefHeight="44.0" prefWidth="92.0" style="-fx-text-fill: #021839; -fx-font-weight: bold;" text="Total Profit" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="34.0" layoutY="99.0" prefHeight="44.0" prefWidth="107.0" style="-fx-text-fill: white; -fx-font-weight: bold;" text="₱" textAlignment="CENTER" />
+                  <Label fx:id="totalProfitLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="34.0" layoutY="99.0" prefHeight="44.0" prefWidth="107.0" style="-fx-text-fill: white; -fx-font-weight: bold;" text="₱" textAlignment="CENTER" />
                </children>
             </Pane>
          </children></HBox>
@@ -45,13 +45,13 @@
             <Pane layoutX="313.0" layoutY="10.0" prefHeight="175.0" prefWidth="175.0" style="-fx-background-color: #4f7abf; -fx-background-radius: 40;">
                <children>
                   <Label layoutX="53.0" layoutY="29.0" prefHeight="44.0" prefWidth="69.0" style="-fx-text-fill: #021839; -fx-font-weight: bold;" text="Total Stocks" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="34.0" layoutY="99.0" prefHeight="44.0" prefWidth="107.0" style="-fx-text-fill: white; -fx-font-weight: bold;" text="0" textAlignment="CENTER" />
+                  <Label fx:id="totalStocksLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="34.0" layoutY="99.0" prefHeight="44.0" prefWidth="107.0" style="-fx-text-fill: white; -fx-font-weight: bold;" text="0" textAlignment="CENTER" />
                </children>
             </Pane>
             <Pane layoutX="313.0" layoutY="10.0" prefHeight="175.0" prefWidth="175.0" style="-fx-background-color: #4f7abf; -fx-background-radius: 40;">
                <children>
                   <Label layoutX="47.0" layoutY="28.0" prefHeight="44.0" prefWidth="82.0" style="-fx-text-fill: #021839; -fx-font-weight: bold;" text="Tota Products " />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="34.0" layoutY="99.0" prefHeight="44.0" prefWidth="107.0" style="-fx-text-fill: white; -fx-font-weight: bold;" text="0" textAlignment="CENTER" />
+                  <Label fx:id="totalProductsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="34.0" layoutY="99.0" prefHeight="44.0" prefWidth="107.0" style="-fx-text-fill: white; -fx-font-weight: bold;" text="0" textAlignment="CENTER" />
                </children>
             </Pane>
          </children>

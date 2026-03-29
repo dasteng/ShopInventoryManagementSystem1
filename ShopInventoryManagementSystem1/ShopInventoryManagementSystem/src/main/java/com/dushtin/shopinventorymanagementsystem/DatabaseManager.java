@@ -128,7 +128,7 @@ public class DatabaseManager {
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 list.add(new Product(
-                        rs.getString("prodcuct_id"),
+                        rs.getString("product_id"),
                         rs.getString("name"),
                         rs.getString("category"),
                         rs.getInt("quantity"),
@@ -142,7 +142,7 @@ public class DatabaseManager {
     }
     
     public static boolean addProduct(Product p) {
-    String sql = "INSERT INTO product (product_id,  name, category, quantity, price) VALUES (?, ?, ?, ?, ?)";
+    String sql = "INSERT INTO products (product_id,  name, category, quantity, price) VALUES (?, ?, ?, ?, ?)";
     try(Connection conn = getConnection(); 
             PreparedStatement ps = conn.prepareStatement(sql)){
         ps.setString(1, p.getProductID());
@@ -161,13 +161,14 @@ public class DatabaseManager {
     }
     
     public static boolean updateProduct(Product p) {
-    String sql = "UPDATE products SET name=?, category=?, quantity=?, price=?, WHERE product_id=?";
+    String sql = "UPDATE products SET name=?, category=?, quantity=?, price=? WHERE product_id=?";
     try (Connection conn = getConnection(); 
             PreparedStatement ps = conn.prepareStatement(sql)){
         ps.setString(1, p.getName());
         ps.setString(2, p.getCategory());
         ps.setInt(3, p.getQuantity());
         ps.setDouble(4, p.getPrice());
+        ps.setString(5, p.getProductID());
         ps.executeUpdate();
         
         return true;
@@ -201,7 +202,7 @@ public class DatabaseManager {
             prepareyaass.setString(1, productId);
             
             ResultSet ares = prepareyaass.executeQuery();
-            return true;
+            return ares.next();
         }catch (SQLException e) {
             return false;
         }
@@ -215,7 +216,7 @@ public class DatabaseManager {
             conn.setAutoCommit(false);
             // this part is basically to take the info of that product
             PreparedStatement ps = conn.prepareStatement(
-            "SELECT name, quantitiy, price FROM products WHERE product_id = ?");
+            "SELECT name, quantity, price FROM products WHERE product_id = ?");
             ps.setString(1, productId);
             ResultSet rs = ps.executeQuery();
             
