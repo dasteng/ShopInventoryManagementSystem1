@@ -260,6 +260,61 @@ public class DatabaseManager {
         } 
     }
     
+    public static List<Sale> getAllSales(){
+        List<Sale> list = new ArrayList<>();
+        String sql = "SELECT * FROM sales ORDER BY sale_id DESC";
+        try(Connection conn = getConnection();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)){
+            
+            while(rs.next()) {
+                list.add(new Sale(
+                        rs.getInt("sale_id"),
+                        rs.getString("product_name"),
+                        rs.getInt("quantity_sold"),
+                        rs.getDouble("price_each"),
+                        rs.getDouble("total"),
+                        rs.getString("sale_date")
+                
+                )); 
+            }
+        
+        }
+        catch (SQLException e) {
+            System.err.println("Error taking all sales " + e.getMessage());
+        }
+    return list;
+    
+    }
+    
+    public static List<Sale> searchSales(String keyword) {
+        List<Sale> list = new ArrayList<>();
+        String sql = "SELECT * FROM sales WHERE product_name LIKE ? OR CAST (sale_id AS TEXT) LIKE ? ORDER BY sale_id DESC";
+        try(Connection conn = getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql)){
+            String k = "%" + keyword + "%";
+            ps.setString(1, k);
+            ps.setString(2, k);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                list.add(new Sale(
+                    rs.getInt("sale_id"),
+                    rs.getString("product_name"),
+                    rs.getInt("quantity_sold"),
+                    rs.getDouble("price_each"),
+                    rs.getDouble("total"),
+                    rs.getString("sale_date")                        
+                
+                ));
+            }
+        }
+        catch (SQLException e){
+            System.err.println("Error finding Sales: " + e.getMessage());
+        }
+        return list;
+    }
+    
     public static int getTotalProductCount() {
         try (Connection conn = getConnection();
                 Statement stmt = conn.createStatement();
