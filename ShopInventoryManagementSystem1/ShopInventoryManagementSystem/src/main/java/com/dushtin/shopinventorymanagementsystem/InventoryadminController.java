@@ -135,12 +135,11 @@ public class InventoryadminController {
             }
             return null;
         });
-
+            // this will run if the upper code work. this just mean that do something with the result from the top
         Optional<Product> result = dialog.showAndWait();
         result.ifPresent(p -> {
             if (DatabaseManager.updateProduct(p)) {
                 refreshTable();
-            
             }
             else {
                 showAlert("Error", "Failed to update product.");
@@ -153,10 +152,89 @@ public class InventoryadminController {
         }
         
         public void showEditDialog(){
-        
+            Product selected = inventoryTable.getSelectionModel().getSelectedItem();
+                if(selected == null) {
+                    showAlert("No Selection", "Please select a Product to edit");
+                    return;
+                }
+            Dialog<Product> dialog = new Dialog<>();    
+            dialog.setTitle("Editing Product");
+            dialog.setHeaderText("Update Product Details:");
+            
+            ButtonType saveBtn = new ButtonType("Save", ButtonBar.ButtonData.OK_DONE);
+            dialog.getDialogPane().getButtonTypes().addAll(saveBtn, ButtonType.CANCEL);
+            
+            TextField nameField = new TextField(selected.getName());
+            TextField categoryField = new TextField(selected.getCategory());
+            TextField qtyField = new TextField(String.valueOf(selected.getQuantity()));
+            TextField priceField = new TextField(String.valueOf(selected.getPrice()));
+            
+            Label idLabel = new Label(selected.getProductID());
+            idLabel.setStyle("-fx-font-weight: bold;");
+            
+            javafx.scene.layout.GridPane grid = new javafx.scene.layout.GridPane();
+            grid.setHgap(10);
+            grid.setVgap(10);
+            
+            grid.add(new Label("ID:"), 0,0);    grid.add(idLabel, 1,0);
+            grid.add(new Label("Name:"), 0,1);  grid.add(nameField, 1,1);
+            grid.add(new Label("Category:"), 0,2);  grid.add(categoryField, 1,2);
+            grid.add(new Label("Quantity:"), 0,3);  grid.add(qtyField, 1,3);
+            grid.add(new Label("Price:"), 0,4);  grid.add(nameField, 1,4);
+            dialog.getDialogPane().setContent(grid);
+            
+            dialog.setResultConverter(btn -> {
+                if(btn == saveBtn) {
+                    try{
+                        selected.setProductName(nameField.getText().trim());
+                        selected.setCategory(categoryField.getText().trim());
+                        selected.setQuantity(Integer.parseInt(qtyField.getText().trim()));
+                        selected.setPrice(Double.parseDouble(priceField.getText().trim()));
+                    return selected;
+                    }
+                    catch(NumberFormatException ex) {
+                        showAlert("Invalid Input","Quantity must be a Whole Number and Price must be a Number");
+                    }
+                }
+                return null;
+            });
+            
+            Optional<Product> result = dialog.showAndWait();
+            result.ifPresent(p -> {
+                if (DatabaseManager.updateProduct(p)) {
+                    refreshTable();
+                } else {
+                    showAlert("Errrr", "Failed to update Product");
+                }
+            
+            });
+            
+            
+            
+            
         }
         
         public void deleteSelected() {
+            Product selected = inventoryTable.getSelectionModel().getSelectedItem();
+            if (selected == null) {
+                showAlert("No Selection" ,"Select a Product to Delete Again");
+                return;
+            }
+            
+            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION,
+            "Delete \"" + selected.getName() + "\"? This Cannot be Undone",
+                    ButtonType.YES, ButtonType.NO);
+            
+            confirm.setTitle("Confirm Delete");
+            confirm.showAndWait().ifPresent(btn -> {
+                if (btn == ButtonType.YES) {
+                    if (DatabaseManager.deleteProduct(selected.getProductID())) {
+                        refreshTable();
+                    } else {
+                        showAlert("Error", "Failed to Delete Product");
+                    }
+                }
+            });
         
         
         }
