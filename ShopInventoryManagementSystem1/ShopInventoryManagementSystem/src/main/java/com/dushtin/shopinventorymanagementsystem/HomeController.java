@@ -38,7 +38,7 @@ public class HomeController {
         }
         totalItemsSoldLabel.setText(String.valueOf(totalitemsold));
         
-        double totalProfit = DatabaseManager.getTotalSaleAmmount();
+        double totalProfit = DatabaseManager.getTotalSaleAmount();
         totalProfitLabel.setText(String.format("₱%.2f", totalProfit));
         
         List<Product> stocks = DatabaseManager.getAllProducts();

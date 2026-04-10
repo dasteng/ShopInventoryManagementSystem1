@@ -347,7 +347,7 @@ public class DatabaseManager {
     
     }
     
-    public static double getTotalSaleAmmount(){
+    public static double getTotalSaleAmount(){
         try(Connection conn = getConnection();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT SUM(total) FROM sales")) {
@@ -359,7 +359,7 @@ public class DatabaseManager {
         
     }
     
-    public static int getTranscationTodayCount(){
+    public static int getTransactionTodayCount(){
         String today = java.time.LocalDate.now().toString();
         String sql = "SELECT COUNT(*) FROM sales WHERE sale_date =?";
         try (Connection conn = getConnection();

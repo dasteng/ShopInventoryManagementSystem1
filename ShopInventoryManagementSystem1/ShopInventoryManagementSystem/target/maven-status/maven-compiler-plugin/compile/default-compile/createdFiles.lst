@@ -10,3 +10,4 @@ com\dushtin\shopinventorymanagementsystem\StockmonitoringadminController.class
 com\dushtin\shopinventorymanagementsystem\LoginController.class
 com\dushtin\shopinventorymanagementsystem\SalesrecordingadminController.class
 com\dushtin\shopinventorymanagementsystem\HomeController.class
+com\dushtin\shopinventorymanagementsystem\Sale.class
