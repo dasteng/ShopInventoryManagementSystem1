@@ -20,9 +20,10 @@ import java.util.List;
 public class ReportingadminController{
 
     //as always, connect them fxml to this controller by this type of code
-    @FXML private TableView<int[]> inventoryReportTable;
+    @FXML private TableView<Product> inventoryReportTable;
     @FXML private TableView<Sale> salesReportTable;
     @FXML private TableView<Product> lowStockTable;
+    @FXML private Label totalInventoryValueLabel;
 
     public void initialize() {
         inventoryReport();
@@ -31,28 +32,26 @@ public class ReportingadminController{
     } 
     
     private void inventoryReport(){
-        int total      = DatabaseManager.getTotalProductCount();
-        int outOfStock = DatabaseManager.getOutofStock();
-        int lowStock   = DatabaseManager.getLowStock();
-        
-        String status;
-        if (outOfStock == 0 && lowStock == 0) status = "All Good";
-        else if (outOfStock > 0) status = "Need to Restock this Product";
-        else status = "Low Stock Warning";
-        
-        TableColumn<int[], Integer> ttlProducts = (TableColumn<int[], Integer>) inventoryReportTable.getColumns().get(0);
-        TableColumn<int[], Integer> oosProducts = (TableColumn<int[], Integer>) inventoryReportTable.getColumns().get(1);
-        TableColumn<int[], String> statss = (TableColumn<int[], String>) inventoryReportTable.getColumns().get(2);
-    
-        ttlProducts.setCellValueFactory(d -> new SimpleIntegerProperty(d.getValue()[0]).asObject());
-        oosProducts.setCellValueFactory(d -> new SimpleIntegerProperty(d.getValue()[1]).asObject());
-        statss.setCellValueFactory(d -> new SimpleStringProperty(status));
-        
-        ObservableList<int[]> data = FXCollections.observableArrayList();
-        data.add(new int[]{total, outOfStock});
-        inventoryReportTable.setItems(data);
-        
-        
+        //as always, connect them fxml to this controller by this type of code
+        TableColumn<Product, String> invProductCol = (TableColumn<Product, String>) inventoryReportTable.getColumns().get(0);
+        TableColumn<Product, String> invCategoryCol = (TableColumn<Product, String>) inventoryReportTable.getColumns().get(1);
+        TableColumn<Product, Integer> invStockCol = (TableColumn<Product, Integer>) inventoryReportTable.getColumns().get(2);
+        TableColumn<Product, Double> invValueCol = (TableColumn<Product, Double>) inventoryReportTable.getColumns().get(3);
+
+        invProductCol.setCellValueFactory(d -> new SimpleStringProperty(d.getValue().getName()));
+        invCategoryCol.setCellValueFactory(d -> new SimpleStringProperty(d.getValue().getCategory()));
+        invStockCol.setCellValueFactory(d -> new SimpleIntegerProperty(d.getValue().getQuantity()).asObject());
+        invValueCol.setCellValueFactory(d -> new SimpleDoubleProperty(d.getValue().getQuantity() * d.getValue().getPrice()).asObject());
+
+        List<Product> all = DatabaseManager.getAllProducts();
+        inventoryReportTable.setItems(FXCollections.observableArrayList(all));
+
+        // compute total inventory value
+        double totalValue = 0;
+        for (Product p : all) {
+            totalValue += p.getQuantity() * p.getPrice();
+        }
+        totalInventoryValueLabel.setText(String.format("Total Inventory Value: ₱%.2f", totalValue));
     }
     
     private void salesReport(){

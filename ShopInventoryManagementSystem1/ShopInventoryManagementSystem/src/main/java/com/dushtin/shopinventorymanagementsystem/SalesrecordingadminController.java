@@ -67,7 +67,7 @@ public class SalesrecordingadminController {
         ObservableList<String> productsIds = FXCollections.observableArrayList();
         
         for (Product p : products) {
-            productsIds.add(p.getProductID() + "-" + p.getName());
+            productsIds.add(p.getProductID() + " - " + p.getName());
         }
         productComboBox.setItems(productsIds);
     }
@@ -93,6 +93,7 @@ public class SalesrecordingadminController {
     String selected = productComboBox.getValue();
     if (selected == null ){
         showAlert("No product selected!", "Please do select a product from the Dropdown");
+        return;
     }
     String productId = selected.split(" - ")[0].trim();
     
@@ -132,9 +133,10 @@ public class SalesrecordingadminController {
     
     private void updateSummaryCards(){
         
-        double totalSales = DatabaseManager.getTotalSaleAmount();
-        totalSalesLabel.setText(String.format("₱%.2f", totalSales));
-        totalProfitLabel.setText(String.format("₱%.2f", totalSales)); // same for now; update if you track cost price
+        double todaySales = DatabaseManager.getTodaySaleAmount(); // total sales for today only
+        double totalProfit = DatabaseManager.getTotalSaleAmount(); // all-time total profit
+        totalSalesLabel.setText(String.format("₱%.2f", todaySales));
+        totalProfitLabel.setText(String.format("₱%.2f", totalProfit)); // same for now; update if you track cost price
         transactionsLabel.setText(String.valueOf(DatabaseManager.getTransactionTodayCount()));
         
     }

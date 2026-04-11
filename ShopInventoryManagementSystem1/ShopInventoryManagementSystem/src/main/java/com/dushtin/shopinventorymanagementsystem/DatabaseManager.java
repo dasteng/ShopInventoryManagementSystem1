@@ -373,6 +373,19 @@ public class DatabaseManager {
     //
     }
     
+    // returns the total sale amount for today only
+    public static double getTodaySaleAmount(){
+        String today = java.time.LocalDate.now().toString();
+        String sql = "SELECT SUM(total) FROM sales WHERE sale_date = ?";
+        try (Connection conn = getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, today);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) return rs.getDouble(1);
+        } catch (SQLException e) {}
+        return 0.0;
+    }
+    
     
     
     

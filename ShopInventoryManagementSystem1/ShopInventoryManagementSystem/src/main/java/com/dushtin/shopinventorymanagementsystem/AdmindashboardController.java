@@ -50,15 +50,7 @@ public class AdmindashboardController {
             });
         }
 
-    
-        if (Centerpane != null) {
-            Centerpane.setOnMouseClicked(e -> {
-                if (sidebar.isVisible()) {
-                    sidebar.setVisible(false);
-                    sidebar.setManaged(false);
-                }
-            });
-        }
+        // removed: Centerpane click-to-hide-sidebar handler (caused sidebar to disappear on any panel click)
     }
     
     private void toggleSidebar() {

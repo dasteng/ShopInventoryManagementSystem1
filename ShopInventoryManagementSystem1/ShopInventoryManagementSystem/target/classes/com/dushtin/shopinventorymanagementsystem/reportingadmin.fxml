@@ -15,12 +15,14 @@
 
     <TableView fx:id="inventoryReportTable" prefHeight="140.0" prefWidth="780">
         <columns>
-            <TableColumn prefWidth="192.0" text="Total Products" />
-            <TableColumn prefWidth="192.0" text="Total Out of Stock Products" />
-            <TableColumn prefWidth="192.0" text="Status" />
-            
+            <TableColumn fx:id="invProductCol" prefWidth="250.0" text="Product" />
+            <TableColumn fx:id="invCategoryCol" prefWidth="180.0" text="Category" />
+            <TableColumn fx:id="invStockCol" prefWidth="150.0" text="Stock" />
+            <TableColumn fx:id="invValueCol" prefWidth="200.0" text="Value (₱)" />
         </columns>
     </TableView>
+
+    <Label fx:id="totalInventoryValueLabel" style="-fx-font-size:13; -fx-font-weight:bold; -fx-text-fill:white;" text="Total Inventory Value: ₱0.00" />
 
     
     <Label style="-fx-font-size:16; -fx-font-weight:bold; -fx-text-fill:white;" text="Sales Summary" />

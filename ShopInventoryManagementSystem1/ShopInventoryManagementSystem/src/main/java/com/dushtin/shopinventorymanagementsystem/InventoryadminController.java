@@ -79,7 +79,7 @@ public class InventoryadminController {
         private void updateSummaryCards(){
             totalProductsLabel.setText(String.valueOf(DatabaseManager.getTotalProductCount()));
             lowStockLabel.setText(String.valueOf(DatabaseManager.getLowStock()));
-            outOfStockLabel.setText(String.valueOf(DatabaseManager.getLowStock()));
+            outOfStockLabel.setText(String.valueOf(DatabaseManager.getOutofStock()));
         
         }
         
@@ -138,11 +138,12 @@ public class InventoryadminController {
             // this will run if the upper code work. this just mean that do something with the result from the top
         Optional<Product> result = dialog.showAndWait();
         result.ifPresent(p -> {
-            if (DatabaseManager.updateProduct(p)) {
+            if (DatabaseManager.productIdExists(p.getProductID())) {
+                showAlert("Duplicate ID", "A product with ID '" + p.getProductID() + "' already exists.");
+            } else if (DatabaseManager.addProduct(p)) {
                 refreshTable();
-            }
-            else {
-                showAlert("Error", "Failed to update product.");
+            } else {
+                showAlert("Error", "Failed to add product. Please try again.");
             }
         });
     
@@ -180,7 +181,7 @@ public class InventoryadminController {
             grid.add(new Label("Name:"), 0,1);  grid.add(nameField, 1,1);
             grid.add(new Label("Category:"), 0,2);  grid.add(categoryField, 1,2);
             grid.add(new Label("Quantity:"), 0,3);  grid.add(qtyField, 1,3);
-            grid.add(new Label("Price:"), 0,4);  grid.add(nameField, 1,4);
+            grid.add(new Label("Price:"), 0,4);  grid.add(priceField, 1,4);
             dialog.getDialogPane().setContent(grid);
             
             dialog.setResultConverter(btn -> {
