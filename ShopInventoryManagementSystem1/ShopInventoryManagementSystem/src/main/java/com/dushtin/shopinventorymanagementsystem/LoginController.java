@@ -26,7 +26,7 @@ public class LoginController {
             String role = DatabaseManager.login(username, password);
 
             try {
-                if("admin".equals(role)) {
+                if("owner".equals(role)) {
                     App.setRoot("AdminDashboard");
                 } else if("manager".equals(role)) {
                     App.setRoot("ManagerDashboard");

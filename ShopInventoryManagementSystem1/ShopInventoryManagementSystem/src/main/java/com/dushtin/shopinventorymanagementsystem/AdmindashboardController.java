@@ -25,14 +25,16 @@ public class AdmindashboardController {
     
 
     @FXML 
-    private Button buttonInventory, buttonSalesRecording, buttonStockMonitoring, buttonReporting, logoutButton, homeButton, burgerButton;
+private Button buttonInventory, buttonSalesRecording, buttonStockMonitoring, buttonReporting, logoutButton, homeButton, burgerButton, buttonUserManagement;
     @FXML private VBox sidebar;
     @FXML private StackPane Centerpane;
+    
     
 
     @FXML
     public void initialize() {
         if (buttonInventory != null) buttonInventory.setOnAction(e -> { showInventory(); setActive(buttonInventory); });
+        if (buttonUserManagement != null) buttonUserManagement.setOnAction(e -> { showUserManagement(); setActive(buttonUserManagement); });
         if (buttonSalesRecording != null) buttonSalesRecording.setOnAction(e -> { showSalesRecording(); setActive(buttonSalesRecording); });
         if (buttonStockMonitoring != null) buttonStockMonitoring.setOnAction(e -> { showStockMonitoring(); setActive(buttonStockMonitoring); });
         if (buttonReporting != null) buttonReporting.setOnAction(e -> { showReporting(); setActive(buttonReporting); });
@@ -49,8 +51,6 @@ public class AdmindashboardController {
                 }
             });
         }
-
-        // removed: Centerpane click-to-hide-sidebar handler (caused sidebar to disappear on any panel click)
     }
     
     private void toggleSidebar() {
@@ -59,14 +59,25 @@ public class AdmindashboardController {
         sidebar.setManaged(!showing);
     }
     
+    private void showUserManagement() {
+    Centerpane.getChildren().clear();
+    try {
+        Parent root = FXMLLoader.load(getClass().getResource("usermanagement.fxml"));
+        Centerpane.getChildren().add(root);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
     
     private void setActive(Button activeButton) {
         homeButton.getStyleClass().remove("active");
+        buttonUserManagement.getStyleClass().remove("active");
         buttonInventory.getStyleClass().remove("active");
         buttonSalesRecording.getStyleClass().remove("active");
         buttonStockMonitoring.getStyleClass().remove("active");
         buttonReporting.getStyleClass().remove("active");
         logoutButton.getStyleClass().remove("active");
+        
         
         if (!activeButton.getStyleClass().contains("active")) {
             activeButton.getStyleClass().add("active");

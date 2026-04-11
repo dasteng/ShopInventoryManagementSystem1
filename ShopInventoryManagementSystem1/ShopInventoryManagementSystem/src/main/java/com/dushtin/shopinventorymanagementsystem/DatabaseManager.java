@@ -66,7 +66,7 @@ public class DatabaseManager {
             
             ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM users");
             if(rs.next() && rs.getInt(1) == 0) {
-                stmt.execute("INSERT INTO users (username, password, role) VALUES ('admin', '1234', 'admin')");
+                stmt.execute("INSERT INTO users (username, password, role) VALUES ('owner', '1234', 'owner')");
                 stmt.execute("INSERT INTO users (username, password, role) VALUES ('manager', '1234', 'manager')");
             }
             
@@ -385,6 +385,67 @@ public class DatabaseManager {
         } catch (SQLException e) {}
         return 0.0;
     }
+    
+    public static List<String[]> getAllUsers() {
+    List<String[]> list = new ArrayList<>();
+    String sql = "SELECT id, username, role FROM users";
+    try (Connection conn = getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+        while (rs.next()) {
+            list.add(new String[]{
+                rs.getString("id"),
+                rs.getString("username"),
+                rs.getString("role")
+            });
+        }
+    } catch (SQLException e) {
+        System.err.println("Error getting users: " + e.getMessage());
+    }
+    return list;
+}
+
+public static boolean addUser(String username, String password, String role) {
+    String sql = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
+    try (Connection conn = getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.setString(1, username);
+        ps.setString(2, password);
+        ps.setString(3, role);
+        ps.executeUpdate();
+        return true;
+    } catch (SQLException e) {
+        System.err.println("Error adding user: " + e.getMessage());
+        return false;
+    }
+}
+
+public static boolean deleteUser(int userId) {
+    String sql = "DELETE FROM users WHERE id = ?";
+    try (Connection conn = getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.setInt(1, userId);
+        ps.executeUpdate();
+        return true;
+    } catch (SQLException e) {
+        System.err.println("Error deleting user: " + e.getMessage());
+        return false;
+    }
+}
+
+public static boolean updatePassword(int userId, String newPassword) {
+    String sql = "UPDATE users SET password = ? WHERE id = ?";
+    try (Connection conn = getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.setString(1, newPassword);
+        ps.setInt(2, userId);
+        ps.executeUpdate();
+        return true;
+    } catch (SQLException e) {
+        System.err.println("Error updating password: " + e.getMessage());
+        return false;
+    }
+}
     
     
     

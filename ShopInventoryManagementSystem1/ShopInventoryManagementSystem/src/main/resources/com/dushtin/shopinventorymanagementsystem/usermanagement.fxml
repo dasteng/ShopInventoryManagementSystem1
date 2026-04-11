@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="20.0" style="-fx-padding: 24; -fx-background-color: #82c0f2;"
+      xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.dushtin.shopinventorymanagementsystem.UsermanagementController">
+
+    <Label text="User Management" style="-fx-font-weight: bold; -fx-text-fill: #021839;">
+        <font><Font name="Century Gothic" size="28.0" /></font>
+    </Label>
+
+    <TableView fx:id="usersTable" prefHeight="220.0">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="50" />
+            <TableColumn fx:id="colUsername" text="Username" prefWidth="200" />
+            <TableColumn fx:id="colRole" text="Role" prefWidth="150" />
+        </columns>
+    </TableView>
+
+    <HBox spacing="10">
+        <Button text="Change Password" onAction="#handleChangePassword"
+                style="-fx-background-color: #4f7abf; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 8 16 8 16; -fx-cursor: hand;" />
+        <Button text="Delete User" onAction="#handleDeleteUser"
+                style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 8 16 8 16; -fx-cursor: hand;" />
+    </HBox>
+
+    <Separator />
+
+    <Label text="Add New User" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #021839;" />
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="newUsernameField" promptText="Username" prefWidth="180" />
+        <PasswordField fx:id="newPasswordField" promptText="Password" prefWidth="180" />
+        <ComboBox fx:id="newRoleCombo" prefWidth="130" />
+        <Button text="Add User" onAction="#handleAddUser"
+                style="-fx-background-color: #2C3E6B; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 8 16 8 16; -fx-cursor: hand;" />
+    </HBox>
+
+    <Label fx:id="messageLabel" text="" />
+
+</VBox>
