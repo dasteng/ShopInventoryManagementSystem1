@@ -20,7 +20,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         DatabaseManager.initializeDatabase(); // now this connects the application to our DatabaseManager class initializeDatabase()
         
-        scene = new Scene(loadFXML("LogiN"), 1300, 550); // windows isnt case sensi so itll eventually find the login aslong as its right spelled
+        scene = new Scene(loadFXML("LogiN"), 1300, 575); // windows isnt case sensi so itll eventually find the login aslong as its right spelled
         stage.setScene(scene);
         stage.show();
     }
