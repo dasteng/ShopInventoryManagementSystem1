@@ -115,7 +115,7 @@ public class SalesrecordingadminController {
                     refreshProductComboBox();
                     updateCurrentStock();
                 } else {
-                    showAlert("Not Enough Stock", "Cannot record sale — insufficient stock for this product.");
+                    showAlert("Not Enough Stock", "Cannot record sale â€” insufficient stock for this product.");
                 }
             } catch (NumberFormatException ex) {
                 showAlert("Invalid Input", "Please enter a valid whole number for quantity.");
@@ -134,9 +134,9 @@ public class SalesrecordingadminController {
     private void updateSummaryCards(){
         
         double todaySales = DatabaseManager.getTodaySaleAmount(); // total sales for today only
-        double totalProfit = DatabaseManager.getTotalSaleAmount(); // all-time total profit
+        double totalProfit = DatabaseManager.getTotalSaleAmount(); // alltime total profit
         totalSalesLabel.setText(String.format("₱%.2f", todaySales));
-        totalProfitLabel.setText(String.format("₱%.2f", totalProfit)); // same for now; update if you track cost price
+        totalProfitLabel.setText(String.format("₱%.2f", totalProfit));
         transactionsLabel.setText(String.valueOf(DatabaseManager.getTransactionTodayCount()));
         
     }

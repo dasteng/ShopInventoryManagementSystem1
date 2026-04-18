@@ -10,41 +10,41 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #82c0f2;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dushtin.shopinventorymanagementsystem.StockmonitoringadminController">
-    <VBox alignment="TOP_CENTER" spacing="15.0" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="10">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" styleClass="module-page" stylesheets="@CSS.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dushtin.shopinventorymanagementsystem.StockmonitoringadminController">
+    <VBox alignment="TOP_CENTER" spacing="18.0" styleClass="module-body" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
 
         <HBox alignment="CENTER" spacing="20.0">
-            <StackPane prefHeight="90" prefWidth="200" style="-fx-background-color: #2196F3; -fx-background-radius: 10; -fx-padding: 10;">
+            <StackPane prefHeight="96.0" prefWidth="200.0" styleClass="metric-card-blue">
                 <VBox alignment="CENTER">
-                    <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="Total Products">
+                    <Label styleClass="card-label" text="Total Products">
                   <font>
                      <Font size="14.0" />
                   </font></Label>
-                    <Label fx:id="totalProductsLabel" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" text="0">
-                  <font>
-                     <Font size="14.0" />
-                  </font></Label>
-                </VBox>
-            </StackPane>
-            <StackPane prefHeight="90" prefWidth="200" style="-fx-background-color: #FF9800; -fx-background-radius: 10;">
-                <VBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
-                    <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="Low Stock Items">
-                  <font>
-                     <Font size="14.0" />
-                  </font></Label>
-                    <Label fx:id="lowStockLabel" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" text="0">
+                    <Label fx:id="totalProductsLabel" styleClass="card-value" text="0">
                   <font>
                      <Font size="14.0" />
                   </font></Label>
                 </VBox>
             </StackPane>
-            <StackPane prefHeight="90" prefWidth="200" style="-fx-background-color: #F44336; -fx-background-radius: 10;">
+            <StackPane prefHeight="96.0" prefWidth="200.0" styleClass="metric-card-orange">
                 <VBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
-                    <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="Out of Stock">
+                    <Label styleClass="card-label" text="Low Stock Items">
                   <font>
                      <Font size="14.0" />
                   </font></Label>
-                    <Label fx:id="outOfStockLabel" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" text="0">
+                    <Label fx:id="lowStockLabel" styleClass="card-value" text="0">
+                  <font>
+                     <Font size="14.0" />
+                  </font></Label>
+                </VBox>
+            </StackPane>
+            <StackPane prefHeight="96.0" prefWidth="200.0" styleClass="metric-card-red">
+                <VBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
+                    <Label styleClass="card-label" text="Out of Stock">
+                  <font>
+                     <Font size="14.0" />
+                  </font></Label>
+                    <Label fx:id="outOfStockLabel" styleClass="card-value" text="0">
                   <font>
                      <Font size="14.0" />
                   </font></Label>
@@ -53,16 +53,18 @@
         </HBox>
 
 
-        <TextField fx:id="searchField" prefHeight="50.0" prefWidth="780.0" promptText="Search product..." />
+        <TextField fx:id="searchField" prefHeight="50.0" prefWidth="780.0" promptText="Search product..." styleClass="search-field" />
        
-        <TableView fx:id="stockTable" prefHeight="400" prefWidth="780" style="-fx-background-color: white;">
-            <columns>
-                <TableColumn fx:id="nameproductColumn" prefWidth="300" text="Product Name" />
-                <TableColumn fx:id="quantityColumn" prefWidth="300" text="Quantity" />
-                <TableColumn fx:id="statusColumn" prefWidth="300" text="Status" />
+        <VBox prefWidth="780.0" styleClass="table-card panel-card">
+            <TableView fx:id="stockTable" prefHeight="400.0" prefWidth="780.0" styleClass="modern-table">
+                <columns>
+                    <TableColumn fx:id="nameproductColumn" prefWidth="300.0" text="Product Name" />
+                    <TableColumn fx:id="quantityColumn" prefWidth="300.0" text="Quantity" />
+                    <TableColumn fx:id="statusColumn" prefWidth="300.0" text="Status" />
 
-            </columns>
-        </TableView>
+                </columns>
+            </TableView>
+        </VBox>
 
     </VBox>
 </AnchorPane>

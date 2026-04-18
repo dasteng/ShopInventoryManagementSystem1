@@ -33,6 +33,8 @@ public class LoginController {
                 } else {
                     messageLabel.setText("Incorrect Username or Password!");
                     messageLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
+                    messageLabel.setWrapText(true);
+                    messageLabel.setMaxWidth(Double.MAX_VALUE);
                 }
 
             } catch (IOException ex) {

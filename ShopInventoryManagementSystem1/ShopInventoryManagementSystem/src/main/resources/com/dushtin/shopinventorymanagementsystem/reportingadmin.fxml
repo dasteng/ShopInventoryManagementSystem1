@@ -9,45 +9,51 @@
 <!-- suggest more necessary things nalang tol
 -->
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #82c0f2;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dushtin.shopinventorymanagementsystem.ReportingadminController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="module-page" stylesheets="@CSS.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dushtin.shopinventorymanagementsystem.ReportingadminController">
 
-<VBox alignment="TOP_CENTER" spacing="15" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="10">
-
-    
-    <Label style="-fx-font-size:16; -fx-font-weight:bold; -fx-text-fill:white;" text="Inventory Status" />
-
-    <TableView fx:id="inventoryReportTable" prefHeight="140.0" prefWidth="780">
-        <columns>
-            <TableColumn fx:id="invProductCol" prefWidth="250.0" text="Product" />
-            <TableColumn fx:id="invCategoryCol" prefWidth="180.0" text="Category" />
-            <TableColumn fx:id="invStockCol" prefWidth="150.0" text="Stock" />
-            <TableColumn fx:id="invValueCol" prefWidth="200.0" text="Value (₱)" />
-        </columns>
-    </TableView>
-
-    <Label fx:id="totalInventoryValueLabel" style="-fx-font-size:13; -fx-font-weight:bold; -fx-text-fill:white;" text="Total Inventory Value: ₱0.00" />
+<VBox alignment="TOP_CENTER" spacing="16.0" styleClass="module-body" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
 
     
-    <Label style="-fx-font-size:16; -fx-font-weight:bold; -fx-text-fill:white;" text="Sales Summary" />
+    <Label styleClass="report-heading" text="Inventory Status" />
 
-    <TableView fx:id="salesReportTable" prefHeight="140.0" prefWidth="780">
-        <columns>
-            <TableColumn prefWidth="100" text="Sale ID" />
-            <TableColumn prefWidth="250" text="Product" />
-            <TableColumn prefWidth="150" text="Quantity" />
-            <TableColumn prefWidth="200" text="Total Profit" />
-        </columns>
-    </TableView>
+    <VBox prefWidth="780.0" styleClass="table-card panel-card">
+        <TableView fx:id="inventoryReportTable" prefHeight="140.0" prefWidth="780.0" styleClass="modern-table">
+            <columns>
+                <TableColumn fx:id="invProductCol" prefWidth="250.0" text="Product" />
+                <TableColumn fx:id="invCategoryCol" prefWidth="180.0" text="Category" />
+                <TableColumn fx:id="invStockCol" prefWidth="150.0" text="Stock" />
+                <TableColumn fx:id="invValueCol" prefWidth="200.0" text="Value" />
+            </columns>
+        </TableView>
+    </VBox>
+
+    <Label fx:id="totalInventoryValueLabel" styleClass="report-total" text="Total Inventory Value: 0.00" />
 
     
-    <Label style="-fx-font-size:16; -fx-font-weight:bold; -fx-text-fill:white;" text="Low Stock Alert" />
+    <Label styleClass="report-heading" text="Sales Summary" />
 
-    <TableView fx:id="lowStockTable" prefHeight="140.0" prefWidth="780">
-        <columns>
-            <TableColumn prefWidth="400" text="Low Stock Product" />
-            <TableColumn prefWidth="200" text="Remaining Quantity" />
-        </columns>
-    </TableView>
+    <VBox prefWidth="780.0" styleClass="table-card panel-card">
+        <TableView fx:id="salesReportTable" prefHeight="140.0" prefWidth="780.0" styleClass="modern-table">
+            <columns>
+                <TableColumn prefWidth="100.0" text="Sale ID" />
+                <TableColumn prefWidth="250.0" text="Product" />
+                <TableColumn prefWidth="150.0" text="Quantity" />
+                <TableColumn prefWidth="200.0" text="Total Profit" />
+            </columns>
+        </TableView>
+    </VBox>
+
+    
+    <Label styleClass="report-heading" text="Low Stock Alert" />
+
+    <VBox prefWidth="780.0" styleClass="table-card panel-card">
+        <TableView fx:id="lowStockTable" prefHeight="140.0" prefWidth="780.0" styleClass="modern-table">
+            <columns>
+                <TableColumn prefWidth="400.0" text="Low Stock Product" />
+                <TableColumn prefWidth="200.0" text="Remaining Quantity" />
+            </columns>
+        </TableView>
+    </VBox>
 
 </VBox>
 </AnchorPane>

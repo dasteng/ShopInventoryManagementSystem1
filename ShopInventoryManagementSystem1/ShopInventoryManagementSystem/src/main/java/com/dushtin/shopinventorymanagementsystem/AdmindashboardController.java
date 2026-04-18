@@ -40,6 +40,7 @@ private Button buttonInventory, buttonSalesRecording, buttonStockMonitoring, but
         if (buttonReporting != null) buttonReporting.setOnAction(e -> { showReporting(); setActive(buttonReporting); });
         if (homeButton != null) homeButton.setOnAction(e -> { showHome(); setActive(homeButton); });
         if (burgerButton != null && sidebar != null) burgerButton.setOnAction(e -> toggleSidebar());
+        if (Centerpane != null) Centerpane.setOnMouseClicked(e -> hideSidebar());
         showHome();
         if (logoutButton != null) {
             logoutButton.setOnAction(e -> {
@@ -57,6 +58,13 @@ private Button buttonInventory, buttonSalesRecording, buttonStockMonitoring, but
         boolean showing = sidebar.isVisible();
         sidebar.setVisible(!showing);
         sidebar.setManaged(!showing);
+    }
+
+    private void hideSidebar() {
+        if (sidebar != null && sidebar.isVisible()) {
+            sidebar.setVisible(false);
+            sidebar.setManaged(false);
+        }
     }
     
     private void showUserManagement() {

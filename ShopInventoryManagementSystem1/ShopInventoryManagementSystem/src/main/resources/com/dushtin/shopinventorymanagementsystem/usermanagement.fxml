@@ -4,40 +4,43 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<VBox spacing="20.0" style="-fx-padding: 24; -fx-background-color: #82c0f2;"
+<VBox spacing="20.0" styleClass="module-body"
+      stylesheets="@CSS.css"
       xmlns="http://javafx.com/javafx/25"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.dushtin.shopinventorymanagementsystem.UsermanagementController">
 
-    <Label text="User Management" style="-fx-font-weight: bold; -fx-text-fill: #021839;">
+    <Label text="User Management" style="-fx-font-weight: bold; -fx-text-fill: #0f172a;">
         <font><Font name="Century Gothic" size="28.0" /></font>
     </Label>
 
-    <TableView fx:id="usersTable" prefHeight="220.0">
-        <columns>
-            <TableColumn fx:id="colId" text="ID" prefWidth="50" />
-            <TableColumn fx:id="colUsername" text="Username" prefWidth="200" />
-            <TableColumn fx:id="colRole" text="Role" prefWidth="150" />
-        </columns>
-    </TableView>
+    <VBox styleClass="table-card panel-card">
+        <TableView fx:id="usersTable" prefHeight="220.0" styleClass="modern-table">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="50.0" />
+                <TableColumn fx:id="colUsername" text="Username" prefWidth="200.0" />
+                <TableColumn fx:id="colRole" text="Role" prefWidth="150.0" />
+            </columns>
+        </TableView>
+    </VBox>
 
-    <HBox spacing="10">
+    <HBox spacing="10.0">
         <Button text="Change Password" onAction="#handleChangePassword"
-                style="-fx-background-color: #4f7abf; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 8 16 8 16; -fx-cursor: hand;" />
+                styleClass="btn-primary" />
         <Button text="Delete User" onAction="#handleDeleteUser"
-                style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 8 16 8 16; -fx-cursor: hand;" />
+                styleClass="btn-danger" />
     </HBox>
 
     <Separator />
 
     <Label text="Add New User" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #021839;" />
 
-    <HBox spacing="10" alignment="CENTER_LEFT">
-        <TextField fx:id="newUsernameField" promptText="Username" prefWidth="180" />
-        <PasswordField fx:id="newPasswordField" promptText="Password" prefWidth="180" />
-        <ComboBox fx:id="newRoleCombo" prefWidth="130" />
+    <HBox spacing="10.0" alignment="CENTER_LEFT">
+        <TextField fx:id="newUsernameField" promptText="Username" prefWidth="180.0" styleClass="search-field" />
+        <PasswordField fx:id="newPasswordField" promptText="Password" prefWidth="180.0" styleClass="search-field" />
+        <ComboBox fx:id="newRoleCombo" prefWidth="130.0" />
         <Button text="Add User" onAction="#handleAddUser"
-                style="-fx-background-color: #2C3E6B; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 8 16 8 16; -fx-cursor: hand;" />
+                styleClass="btn-success" />
     </HBox>
 
     <Label fx:id="messageLabel" text="" />
