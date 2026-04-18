@@ -51,7 +51,7 @@ public class ReportingadminController{
         for (Product p : all) {
             totalValue += p.getQuantity() * p.getPrice();
         }
-        totalInventoryValueLabel.setText(String.format("Total Inventory Value: â‚±%.2f", totalValue));
+        totalInventoryValueLabel.setText(String.format("Total Inventory Value: ₱%.2f", totalValue));
     }
     
     private void salesReport(){

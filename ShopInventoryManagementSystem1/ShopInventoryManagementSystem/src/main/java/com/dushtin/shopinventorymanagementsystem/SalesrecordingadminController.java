@@ -115,7 +115,7 @@ public class SalesrecordingadminController {
                     refreshProductComboBox();
                     updateCurrentStock();
                 } else {
-                    showAlert("Not Enough Stock", "Cannot record sale â€” insufficient stock for this product.");
+                    showAlert("Not Enough Stock", "Cannot record sale” insufficient stock for this product.");
                 }
             } catch (NumberFormatException ex) {
                 showAlert("Invalid Input", "Please enter a valid whole number for quantity.");

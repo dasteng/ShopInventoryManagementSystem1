@@ -18,7 +18,7 @@
     <StackPane alignment="CENTER">
         <HBox maxHeight="520.0" maxWidth="980.0" styleClass="login-panel">
             <VBox spacing="18.0" styleClass="login-side login-brand-panel">
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="101.0" prefWidth="375.0" style="-fx-text-fill: black; -fx-font-size: 30;" styleClass="login-brand-copy" text="Shop Inventory Management System" textAlignment="CENTER" wrapText="true">
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="101.0" prefWidth="375.0" style="-fx-text-fill: black; -fx-font-size: 20;" styleClass="login-brand-copy" text="Shop Inventory Management System" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="14.0" />
                </font></Label>
