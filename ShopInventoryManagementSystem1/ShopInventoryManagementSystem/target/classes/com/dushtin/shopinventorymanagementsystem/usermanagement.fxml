@@ -36,8 +36,8 @@
     <Label text="Add New User" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #021839;" />
 
     <HBox spacing="10.0" alignment="CENTER_LEFT">
-        <TextField fx:id="newUsernameField" promptText="Username" prefWidth="180.0" styleClass="search-field" />
-        <PasswordField fx:id="newPasswordField" promptText="Password" prefWidth="180.0" styleClass="search-field" />
+        <TextField fx:id="newUsernameField" promptText="Username" style="-fx-prompt-text-fill: gray;" prefWidth="180.0" styleClass="search-field" />
+        <PasswordField fx:id="newPasswordField" promptText="Password" style="-fx-prompt-text-fill: gray;" prefWidth="180.0" styleClass="search-field" />
         <ComboBox fx:id="newRoleCombo" prefWidth="130.0" />
         <Button text="Add User" onAction="#handleAddUser"
                 styleClass="btn-success" />

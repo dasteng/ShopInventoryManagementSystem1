@@ -53,7 +53,7 @@
         </HBox>
 
 
-        <TextField fx:id="searchField" prefHeight="50.0" prefWidth="780.0" promptText="Search product..." styleClass="search-field" />
+        <TextField fx:id="searchField" prefHeight="50.0" prefWidth="780.0" promptText="Search product..." style="-fx-prompt-text-fill: gray;" styleClass="search-field" />
        
         <VBox prefWidth="780.0" styleClass="table-card panel-card">
             <TableView fx:id="stockTable" prefHeight="400.0" prefWidth="780.0" styleClass="modern-table">

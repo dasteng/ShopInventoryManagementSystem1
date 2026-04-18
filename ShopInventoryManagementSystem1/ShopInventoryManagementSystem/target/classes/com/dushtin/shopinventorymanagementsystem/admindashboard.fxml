@@ -16,7 +16,7 @@
                 <HBox alignment="CENTER_LEFT" spacing="14.0" styleClass="topbar-section">
                     <Button fx:id="burgerButton" prefHeight="42.0" prefWidth="92.0" styleClass="menu-button" text="Menu" />
                     <VBox spacing="2.0">
-                        <Label styleClass="topbar-kicker" text="Shop Inventory" />
+                        <Label styleClass="topbar-kicker" text="Shop Inventory Management System" />
                         <Label styleClass="topbar-title" text="Owner Dashboard" />
                     </VBox>
                 </HBox>
