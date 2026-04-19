@@ -17,7 +17,7 @@
                     <Button fx:id="burgerButton" prefHeight="42.0" prefWidth="92.0" styleClass="menu-button" text="Menu" />
                     <VBox spacing="2.0">
                         <Label styleClass="topbar-kicker" text="Shop Inventory Management System" />
-                        <Label styleClass="topbar-title" text="Owner Dashboard" />
+                        <Label styleClass="topbar-title" text="Owner" />
                     </VBox>
                 </HBox>
             </left>
